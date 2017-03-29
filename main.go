@@ -7,6 +7,7 @@ import (
 
 func main() {
 	router := gin.Default()
+	gin.SetMode(gin.ReleaseMode)
 	router.GET("/", controllers.Index)
 	router.POST("/fetch/list", controllers.Scrape)
 	router.POST("/fetch/detail", controllers.GetDetail)

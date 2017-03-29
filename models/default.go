@@ -5,10 +5,11 @@ import "fmt"
 var DEBUG bool
 
 func init() {
-  fmt.Println("Initializing models")
-  DEBUG = true
+	DEBUG = false
 }
 
 func debug(format string, args ...interface{}) {
-  fmt.Printf(format + "\n", args...)
+	if DEBUG {
+		fmt.Printf(format+"\n", args...)
+	}
 }

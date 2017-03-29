@@ -26,3 +26,19 @@ func Scrape(this *gin.Context) {
 		"items": w.NewsItems,
 	})
 }
+
+func GetDetail(this *gin.Context) {
+	d := models.Detail{}
+	err := this.BindJSON(&d)
+	if err != nil {
+		this.JSON(200, gin.H{"error": err.Error()})
+		return
+	}
+	/*
+		d.Link = this.Query("link") //"http://www.jowhar.com/2017/03/17/31-qaxooti-soomaali-ah-oo-lagu-diley-duqeyn-xeebaha-dalka-yemen/"
+		d.TitleSelector = this.Query("title_selector") //"#content > header > h1"
+		d.DetailSelector = this.Query("detail_selector") //"#post-66495 > div"
+	*/
+	d.Visit()
+	this.JSON(200, gin.H{"detail": d})
+}

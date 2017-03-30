@@ -82,7 +82,7 @@ func (site *Website) parseDocument(doc *goquery.Document) (bool, error) {
 		//debug(section.Text())
 		link, _ := section.Find(site.Selector.TargetLink).Attr("href")
 		debug(link)
-		text := section.Find(site.Selector.TargetText).Text()
+		text := strings.TrimSpace(section.Find(site.Selector.TargetText).Text())
 		debug(text)
 		if len(link) > 0 && len(text) > 0 {
 			site.NewsItems = append(site.NewsItems, &NewsItem{Title: text, Link: link, WebsiteName: site.Name, WebsiteURL: site.RootURL})

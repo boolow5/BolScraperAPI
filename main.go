@@ -5,9 +5,13 @@ import (
 	"gopkg.in/gin-gonic/gin.v1"
 )
 
-func main() {
-	router := gin.Default()
+func init() {
 	gin.SetMode(gin.ReleaseMode)
+}
+
+func main() {
+
+	router := gin.Default()
 	router.GET("/", controllers.Index)
 	router.POST("/fetch/list", controllers.Scrape)
 	router.POST("/fetch/detail", controllers.GetDetail)

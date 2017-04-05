@@ -2,15 +2,18 @@ package main
 
 import (
 	"github.com/boolow5/BolScraperAPI/controllers"
+	"github.com/boolow5/BolScraperAPI/models"
 	"gopkg.in/gin-gonic/gin.v1"
 )
 
 func init() {
-	gin.SetMode(gin.ReleaseMode)
+
 }
 
 func main() {
-	gin.SetMode(gin.ReleaseMode)
+	if !models.DEBUG {
+		gin.SetMode(gin.ReleaseMode)
+	}
 
 	router := gin.Default()
 	router.GET("/", controllers.Index)

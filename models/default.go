@@ -1,11 +1,15 @@
 package models
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"strconv"
+)
 
 var DEBUG bool
 
 func init() {
-	DEBUG = false
+	DEBUG, _ = strconv.ParseBool(os.Getenv("DEBUG"))
 }
 
 func debug(format string, args ...interface{}) {
